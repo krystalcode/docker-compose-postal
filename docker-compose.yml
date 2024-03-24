@@ -2,7 +2,7 @@ version: '2.4'
 
 services:
 
-  postal-web:
+  postal_web:
     # Build.
     image: ghcr.io/postalserver/postal:${APP_CONTAINER_POSTAL_VERSION}
 
