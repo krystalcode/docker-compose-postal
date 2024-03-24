@@ -1,0 +1,4 @@
+[mysqld]
+# `innodb_log_file_size` should be set to at least 10 times the biggest message
+# you wish to send (150MB for 15MB email, 250MB for 25MB email, etc).
+innodb_log_file_size=240MB
