@@ -37,10 +37,10 @@ services:
 
     # Configure.
     depends_on:
-      - postal
+      - postal_web
 
     links:
-      - postal:postal
+      - postal_web:postal
 
     environment:
       - VIRTUAL_HOST=${APP_VIRTUAL_HOST}
