@@ -82,7 +82,7 @@ services:
 
   rabbitmq:
     # Build.
-    image: docker.io/rabbitmq:${APP_CONTAINER_RABBITMQ_VERSION}-alpine
+    image: docker.io/rabbitmq:${APP_CONTAINER_RABBITMQ_VERSION}
 
     # Run.
     container_name: ${APP_ID}_mysql
