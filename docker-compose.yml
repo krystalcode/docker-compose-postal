@@ -59,7 +59,7 @@ services:
 
   mysql:
     # Build.
-    image: percona:${APP_CONTAINER_MYSQL_VERSION}
+    image: mariadb:${APP_CONTAINER_MYSQL_VERSION}
 
     # Run.
     command: --max_allowed_packet=64M --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
@@ -69,17 +69,15 @@ services:
 
     # Configure.
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=${APP_MYSQL_ALLOW_EMPTY_PASSWORD}
-      - MYSQL_USER=${APP_MYSQL_USER}
-      - MYSQL_PASSWORD=${APP_MYSQL_PASSWORD}
-      - MYSQL_DATABASE=${APP_MYSQL_DATABASE}
+      - MARIADB_ROOT_PASSWORD=${APP_MYSQL_ROOT_PASSWORD}
+      - MARIADB_DATABASE=${APP_MYSQL_DATABASE}
 
     networks:
       - backend
 
     volumes:
       - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/mysql/data:/var/lib/mysql
-      - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/mysql/config/postal.cnf:/etc/percona-server.conf.d/postal.cnf
+      - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/mysql/config/postal.cnf:/etc/mysql/conf.d/postal.cnf
 
 networks:
   backend:
