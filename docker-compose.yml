@@ -24,7 +24,7 @@ services:
       - frontend
 
     volumes:
-      - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/postal/config:/config
+      - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/postal/config:/config:ro
 
   caddy:
     # Build.
@@ -77,7 +77,7 @@ services:
 
     volumes:
       - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/mysql/data:/var/lib/mysql
-      - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/mysql/config/postal.cnf:/etc/mysql/conf.d/postal.cnf
+      - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/mysql/config/postal.cnf:/etc/mysql/conf.d/postal.cnf:ro
 
 networks:
   backend:
