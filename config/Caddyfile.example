@@ -1,0 +1,3 @@
+https://postal.krystalcode.dev {
+    reverse_proxy postal_web:5000
+}
