@@ -26,6 +26,57 @@ services:
     volumes:
       - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/postal/config:/config:ro
 
+  postal_smtp:
+    # Build.
+    image: ghcr.io/postalserver/postal:${APP_CONTAINER_POSTAL_VERSION}
+
+    # Run.
+    command: postal smtp-server
+    container_name: ${APP_ID}_postal_smtp
+
+    restart: unless-stopped
+
+    # Configure:
+    depends_on:
+      - mysql
+
+    links:
+      - mysql:mysql
+
+    networks:
+      - backend
+      - frontend
+
+    volumes:
+      - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/postal/config:/config:ro
+
+  postal_worker:
+    # Build.
+    image: ghcr.io/postalserver/postal:${APP_CONTAINER_POSTAL_VERSION}
+
+    # Run.
+    command: postal worker
+    container_name: ${APP_ID}_postal_worker
+
+    restart: unless-stopped
+
+    cap_add:
+      - NET_BIND_SERVICE
+
+    # Configure:
+    depends_on:
+      - mysql
+
+    links:
+      - mysql:mysql
+
+    networks:
+      - backend
+      - frontend
+
+    volumes:
+      - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/postal/config:/config:ro
+
   caddy:
     # Build.
     image: docker.io/caddy:${APP_CONTAINER_CADDY_VERSION}
