@@ -81,27 +81,6 @@ services:
       - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/mysql/data:/var/lib/mysql
       - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/mysql/config/postal.cnf:/etc/percona-server.conf.d/postal.cnf
 
-  rabbitmq:
-    # Build.
-    image: docker.io/rabbitmq:${APP_CONTAINER_RABBITMQ_VERSION}
-
-    # Run.
-    container_name: ${APP_ID}_rabbitmq
-
-    restart: unless-stopped
-
-    # Configure.
-    environment:
-      - RABBITMQ_DEFAULT_USER=${APP_RABBITMQ_DEFAULT_USER}
-      - RABBITMQ_DEFAULT_PASS=${APP_RABBITMQ_DEFAULT_PASS}
-      - RABBITMQ_DEFAULT_VHOST=${APP_RABBITMQ_DEFAULT_VHOST}
-
-    networks:
-      - backend
-
-    volumes:
-      - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/rabbitmq:/var/lib/rabbitmq
-
 networks:
   backend:
   frontend:
