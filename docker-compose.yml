@@ -55,7 +55,7 @@ services:
 
     volumes:
       - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/caddy/config/Caddyfile:/etc/caddy/Caddyfile:ro
-      - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/caddy/data:/data
+      - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/caddy/data:/data/caddy
 
   mysql:
     # Build.
