@@ -24,7 +24,7 @@ services:
       - frontend
 
     volumes:
-      - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/postal/config:/config
+      - ${DOCKER_COMPOSE_VOLUMES_DIR}/${APP_VOLUMES_DIR}/postal/config:/opt/postal/config
 
   caddy:
     # Build.
